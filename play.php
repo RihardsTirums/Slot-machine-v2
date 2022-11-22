@@ -10,17 +10,17 @@ $choseBetAmount = implode(", ",$startGame->getChoseBet());
 
 while (true) {
     $bet = readline("Please select the amount you would like to bet:  ($choseBetAmount): ");
-    $isPActive = true;
-    while ($isPActive){
+    $PromptActive = true;
+    while ($PromptActive){
         $startGame->quit($bet);
         if (in_array((int)$bet, $startGame->getChoseBet()) && (int)$bet <= $startGame->getCash()){
-            $isPActive = false;
+            $PromptActive = false;
             continue;
         }
         $bet = readline("Try again: ");
     }
-    $isGActive = true;
-    while ($isGActive) {
+    $isGameActive = true;
+    while ($isGameActive) {
         $startGame->spinSlots();
         echo $startGame->displayBoard();
         $startGame->winningConditions($bet);
@@ -32,16 +32,16 @@ while (true) {
             exit;
         }
         $question = readline("Spin ? (y/n): ");
-        $pActive = true;
-        while ($pActive) {
+        $isPromptActive = true;
+        while ($isPromptActive) {
             $startGame->quit($question);
 
-            strtoupper($question) == "Y" ? $pActive = false:
-                (strtoupper($question) == "N" ? $isGActive = $pActive = false : $question = readline("Try again: "));
+            strtoupper($question) == "Y" ? $isPromptActive = false:
+                (strtoupper($question) == "N" ? $isGameActive = $isPromptActive = false : $question = readline("Try again: "));
 
             if ($bet > $startGame->getCash()) {
                 echo "You don't have enough money to play";
-                $pActive = $isGActive = false;
+                $isPromptActive = $isGameActive = false;
             }
         }
 

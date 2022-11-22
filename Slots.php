@@ -1,6 +1,6 @@
 <?php
 class Slots {
-    private array $valueOccurrences = ["G","G","G","G","G","L","L","L","X","X","X","O","O","$"]; //Elements
+    private array $valueOccurrences = ["G","G","G","G","G","G","G","L","L","L","X","X","O","$"]; //Elements
     private array $payouts = ["$" => 100, "O" => 50, "X" => 40, "L" => 10, "G" => 5]; // Payouts
 
     private int $cash = 5000;
